@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('capsules', function (Blueprint $table) {
             $table->id();
+            $table->integer("userId");
             $table->text("message");
             $table->string("image")->nullable(); 
             $table->string("voice")->nullable(); 

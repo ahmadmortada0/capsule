@@ -11,6 +11,11 @@ Route::group(["prefix" =>"v0.1"], function(){
     Route::group(["middleware" => "auth:api"], function(){
         //AUTHENTICATED APIs
         Route::group(["prefix" => "user"], function(){
+            Route::post("/createCapsule", [AuthController::class, "createCapsule"]);
+            Route::GET("/getCapsule{id?}", [AuthController::class, "getCapsule"]);
+            Route::GET("/getCapsuleByPrivacy{privacy?}", [AuthController::class, "getCapsuleByPrivacy"]);
+            Route::post("/surpriseCapsule", [AuthController::class, "surpriseCapsule"]);
+            
         });
     });
 
