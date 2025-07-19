@@ -45,16 +45,18 @@ class CapsuleService
     }
 
     static function  surpriseCapsule(Request $request){
-        
-        $capsule = Capsule::find($request->$id);
 
-        if($capsule->isSurpris===false){
+        $capsule = Capsule::find($request->id);
+        // dd($capsule);
+        $check= $capsule->is_surprise;
+        if($capsule&&!$check){
+        $capsule->is_surprise = true;
+        $capsule->revealdate = $request->revealdate;
+        $capsule->save();
 
-        $surprise = $capsule->update(['isSurprise' => true , "revealdate"=>$request->revealdate]);
-        $surprise->save();
-
-        return $surprise;
-    }
+        return $capsule;
+        }
             return null;
         }
+
 }
