@@ -17,13 +17,12 @@ class CapsuleFactory extends Factory
     public function definition(): array
     {
         return [
+            'userId'=>0,
             'message' => $this->faker->realText(50),
             'location' => $this->faker->city(),
             'mood' => $this->faker->randomElement(['happy', 'sad', 'angry', 'love']),
             'privacy' => $this->faker->randomElement(['public', 'private', 'unlisted']),
-            'is_surprise' => $this->faker->boolean(10),
             'revealdate' => $this->faker->dateTimeBetween('now', '+2 years'),
-
         ];
     }
 }

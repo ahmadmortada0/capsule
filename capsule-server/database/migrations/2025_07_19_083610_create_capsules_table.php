@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("image")->nullable(); 
             $table->string("voice")->nullable(); 
             $table->string("location")->nullable();
-            $table->enum('mood', ['happy', 'sad', 'angry', 'nostalgic', 'romantic', 'grateful']); 
+            $table->enum('mood', ['happy', 'sad', 'angry', 'love',]); 
             $table->enum('privacy', ['public', 'private', 'unlisted']); 
             $table->boolean('is_surprise')->default(false);
             $table->date("revealdate");
