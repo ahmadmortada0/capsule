@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use  App\Services\capsuleService;
-
+use  App\Services\CapsuleService;
 use Illuminate\Http\Request;
 class CapsuleController extends Controller
 {
     function getCapsule(Request $request){
-        $capsule=Capsule::all()->where("user_id",$request["user_id"]);
-        return $this->responseJSON($capsule);
+        $capsule=CapsuleService::getCapsule($request);
+
+        if($capsule)return $this->responseJSON($capsule);
+        return $this->responseJSON(null,"notfound",404);
         
     }
 }

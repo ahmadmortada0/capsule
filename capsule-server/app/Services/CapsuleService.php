@@ -2,14 +2,15 @@
 
 namespace App\Services;
 use App\Models\Capsule;
+use Illuminate\Http\Request;
 
 class CapsuleService
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
-    {
-        
+    static function getCapsule(Request $request){
+
+    
+        $capsules = Capsule::where('userId', $request->userId)->get();
+
+        return $capsules->isNotEmpty() ? $capsules : null;
     }
 }
