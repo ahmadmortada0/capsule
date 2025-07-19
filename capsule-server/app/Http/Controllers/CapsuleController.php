@@ -28,4 +28,9 @@ class CapsuleController extends Controller
             return $this->responseJSON(null,"notfound",404);
     }
     }
-
+    function surpriseCapsule(Request $request){
+            $capsule = CapsuleService:: surpriseCapsule($request);
+            if($capsule) return $this->responseJSON($capsule);
+            return $this->responseJSON(null,"notfound",404);
+       
+    }

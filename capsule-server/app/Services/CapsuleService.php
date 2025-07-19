@@ -42,4 +42,10 @@ class CapsuleService
         $capsule->save();
         return $capsule;
     }
+    static function  surpriseCapsule(Request $request){
+        $capsule = Capsule::find($request->$id);
+        $surprise = $capsule->update(['isSurprise' => true , "revealdate"=>$request->revealdate]);
+        $surprise->save();
+        return $surprise;
+        }
 }
