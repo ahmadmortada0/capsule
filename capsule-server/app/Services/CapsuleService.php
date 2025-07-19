@@ -28,6 +28,7 @@ class CapsuleService
         //  dd($position);
          return $position->countryName;
     }
+
     static function createCapsule(Request $request){
         $capsule = new Capsule;
         $capsule->userId = $request->userId;
@@ -42,10 +43,18 @@ class CapsuleService
         $capsule->save();
         return $capsule;
     }
+
     static function  surpriseCapsule(Request $request){
+        
         $capsule = Capsule::find($request->$id);
+
+        if($capsule->isSurpris===false){
+
         $surprise = $capsule->update(['isSurprise' => true , "revealdate"=>$request->revealdate]);
         $surprise->save();
+
         return $surprise;
+    }
+            return null;
         }
 }
