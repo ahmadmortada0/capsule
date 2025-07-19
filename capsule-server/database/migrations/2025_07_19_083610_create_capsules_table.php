@@ -17,11 +17,11 @@ return new class extends Migration
             $table->text("message");
             $table->string("image")->nullable(); 
             $table->string("voice")->nullable(); 
-            $table->string("location")->nullable();
+            $table->string("location");
             $table->enum('mood', ['happy', 'sad', 'angry', 'love',]); 
             $table->enum('privacy', ['public', 'private', 'unlisted']); 
             $table->boolean('is_surprise')->default(false);
-            $table->date("revealdate");
+            $table->date("revealdate")->nullable();;
             $table->timestamps();
         });
     }

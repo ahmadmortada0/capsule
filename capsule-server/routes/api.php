@@ -7,7 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CapsuleController;
 
 Route::group(["prefix" =>"v0.1"], function(){
-     Route::post("/getCapsule", [CapsuleController::class, "getCapsule"]);
+            Route::post("/getCapsule", [CapsuleController::class, "getCapsule"]);
             Route::post("/getCapsuleByPrivacy", [CapsuleController::class, "getCapsuleByPrivacy"]);
             Route::post("/createCapsule", [CapsuleController::class, "createCapsule"]);
             Route::post("/surpriseCapsule", [CapsuleController::class, "surpriseCapsule"]);
