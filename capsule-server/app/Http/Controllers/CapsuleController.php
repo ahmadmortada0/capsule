@@ -34,4 +34,9 @@ class CapsuleController extends Controller
             return $this->responseJSON(null,"notfound",404);
        
     }
+    function downloadCapsule(int $id){
+            $capsule = CapsuleService::downloadCapsule($id);
+            if($capsule) return $this->responseJSON($capsule);
+            return $this->responseJSON(null,"Failed to download",404);
+        }
 }

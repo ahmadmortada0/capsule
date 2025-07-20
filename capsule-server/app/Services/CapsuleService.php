@@ -59,4 +59,8 @@ class CapsuleService
             return null;
         }
 
+    static function downloadCapsule(int $id) {
+        $capsule = Capsule::find($id);
+        return Capsule::download('file.jpg');
+    }
 }
