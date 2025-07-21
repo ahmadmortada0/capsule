@@ -8,16 +8,18 @@ use Stevebauman\Location\Position;
 
 class CapsuleService
 {
-    static function getCapsule(Request $request){
+    static function getCapsule($id){
+        $capsule= Capsule::find($id);
+        return $capsule;
+        // $capsule =auth()->id();
+        
+        // $capsules = Capsule::where('userId', $capsule)->get();
 
-    
-        $capsules = Capsule::where('userId', $request->userId)->get();
-
-        return $capsules->isNotEmpty() ? $capsules : null;
+        // return $capsules->isNotEmpty() ? $capsules : null;
     }
 
-    static function getCapsuleByPrivacy(Request $request){
-        $capsules = Capsule::where('privacy', $request->privacy)->get();
+    static function getCapsuleByPrivacy(){
+        $capsules = Capsule::where('privacy', "public")->where('is_surprise', false)->get();
         return $capsules->isNotEmpty() ? $capsules : null;
     }
 
@@ -48,7 +50,6 @@ class CapsuleService
     static function  surpriseCapsule(Request $request){
 
         $capsule = Capsule::find(auth()->id());
-        // dd($capsule);
         $check= $capsule->is_surprise;
         if($capsule&&!$check){
         $capsule->is_surprise = true;

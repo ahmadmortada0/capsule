@@ -8,8 +8,8 @@ class CapsuleController extends Controller
 
 
 {
-    function getCapsule(Request $request){
-        $capsule=CapsuleService::getCapsule($request);
+    function getCapsule($id){
+        $capsule=CapsuleService::getCapsule($id);
 
         if($capsule)return $this->responseJSON($capsule);
         return $this->responseJSON(null,"notfound",404);
@@ -17,8 +17,9 @@ class CapsuleController extends Controller
     }
     function getCapsulebyPrivacy(Request $request){
         $capsule=CapsuleService::getCapsuleByPrivacy($request);
-
-       
+        
+        if($capsule)return $this->responseJSON($capsule);
+        return $this->responseJSON(null,"notfound",404);
         
     }
    

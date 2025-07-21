@@ -8,15 +8,15 @@ use App\Http\Controllers\CapsuleController;
 
 Route::group(["prefix" =>"v0.1"], function(){
     // Route::post("/getUser", [AuthController::class, "getUser"]);
-    Route::post("/getCapsule", [CapsuleController::class, "getCapsule"]);
-    Route::post("/getCapsuleByPrivacy", [CapsuleController::class, "getCapsuleByPrivacy"]);
     Route::post("/createCapsule", [CapsuleController::class, "createCapsule"]);
     Route::post("/surpriseCapsule", [CapsuleController::class, "surpriseCapsule"]);
-    Route::get("/downloadCapsule{id?}", [CapsuleController::class, "downloadCapsule"]);
-           
+    Route::get("/downloadCapsule/{id?}", [CapsuleController::class, "downloadCapsule"]);
+    
     Route::group(["middleware" => "auth:api"], function(){
         //AUTHENTICATED APIs
         Route::group(["prefix" => "user"], function(){
+            Route::get("/getCapsule/{id?}", [CapsuleController::class, "getCapsule"]);
+            Route::get("/getCapsuleByPrivacy", [CapsuleController::class, "getCapsuleByPrivacy"]);
         });
     });
 
