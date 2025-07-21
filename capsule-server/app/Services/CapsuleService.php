@@ -22,31 +22,32 @@ class CapsuleService
     }
 
     static function getLocation(Request $request){
-             $ip = "212.110.88.45";
+             $ip = $request->ip();
             //  $request->ip();
          $position = Location::get($ip);
         //  dd($position);
-         return $position->countryName;
+         return $position && is_object($position) ? $position->countryName ?? 'Unknown' : 'Unknown';
+
     }
 
     static function createCapsule(Request $request){
         $capsule = new Capsule;
-        $capsule->userId = $request->userId;
+        $capsule->userId = auth()->id();
         $capsule->message = $request->message;
         $capsule->image = $request->image; 
         $capsule->voice = $request->voice;
         $capsule->location = CapsuleService::getLocation($request);
         $capsule->mood = $request->mood;
         $capsule->privacy = $request->privacy;
-        $capsule->is_surprise = $request->is_surprise;
-        $capsule->revealdate = $request->revealdate;
+        $capsule->is_surprise = null;
+        $capsule->revealdate = null;
         $capsule->save();
         return $capsule;
     }
 
     static function  surpriseCapsule(Request $request){
 
-        $capsule = Capsule::find($request->id);
+        $capsule = Capsule::find(auth()->id());
         // dd($capsule);
         $check= $capsule->is_surprise;
         if($capsule&&!$check){

@@ -46,9 +46,9 @@ class AuthService{
         $user->token = $token;
         return $user;
     }
-     static function getUser(Request $request){
-        $token= $request->token;
-        $Auth = Auth::where('token', $token)->get();
-        return $Auth ? $Auth : null;
-    }
+    //  static function getUser(Request $request){
+    //     $token= $request->token;
+    //     $Auth = User::where('token', $token)->get();
+    //     return $Auth ? $Auth : null;
+    // }
 }

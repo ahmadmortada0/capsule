@@ -19,8 +19,8 @@ class AuthController extends Controller{
         $user = AuthService::register($request);
         return $this->responseJSON($user);
     }
-    public function getUser( Request $request){
-        $user = AuthService::getuser( $request);
-        return $this->responseJSON($user);
-    }
+    // public function getUser( Request $request){
+    //     $user = AuthService::getuser( $request);
+    //     return $this->responseJSON($user);
+    // }
 }
