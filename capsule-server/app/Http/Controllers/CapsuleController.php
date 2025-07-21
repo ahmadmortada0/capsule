@@ -8,6 +8,13 @@ class CapsuleController extends Controller
 
 
 {
+    function getUserCapsule(){
+        $capsule=CapsuleService::getUserCapsule();
+
+        if($capsule)return $this->responseJSON($capsule);
+        return $this->responseJSON(null,"notfound",404);
+        
+    }
     function getCapsule($id){
         $capsule=CapsuleService::getCapsule($id);
 

@@ -7,14 +7,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CapsuleController;
 
 Route::group(["prefix" =>"v0.1"], function(){
-    // Route::post("/getUser", [AuthController::class, "getUser"]);
-    Route::post("/createCapsule", [CapsuleController::class, "createCapsule"]);
-    Route::post("/surpriseCapsule", [CapsuleController::class, "surpriseCapsule"]);
-    Route::get("/downloadCapsule/{id?}", [CapsuleController::class, "downloadCapsule"]);
-    
     Route::group(["middleware" => "auth:api"], function(){
         //AUTHENTICATED APIs
         Route::group(["prefix" => "user"], function(){
+            Route::get("/getUserCapsule", [CapsuleController::class, "getUserCapsule"]);
+            Route::post("/createCapsule", [CapsuleController::class, "createCapsule"]);
+            Route::post("/surpriseCapsule", [CapsuleController::class, "surpriseCapsule"]);
+            Route::get("/downloadCapsule/{id?}", [CapsuleController::class, "downloadCapsule"]);
+            
             Route::get("/getCapsule/{id?}", [CapsuleController::class, "getCapsule"]);
             Route::get("/getCapsuleByPrivacy", [CapsuleController::class, "getCapsuleByPrivacy"]);
         });

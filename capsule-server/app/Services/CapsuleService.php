@@ -8,14 +8,17 @@ use Stevebauman\Location\Position;
 
 class CapsuleService
 {
+    static function getUserCapsule(){
+     $capsule =auth()->id();
+    
+     $capsules = Capsule::where('userId', $capsule)->get();
+
+    return $capsules->isNotEmpty() ? $capsules : null;
+    }
+
     static function getCapsule($id){
         $capsule= Capsule::find($id);
         return $capsule;
-        // $capsule =auth()->id();
-        
-        // $capsules = Capsule::where('userId', $capsule)->get();
-
-        // return $capsules->isNotEmpty() ? $capsules : null;
     }
 
     static function getCapsuleByPrivacy(){
