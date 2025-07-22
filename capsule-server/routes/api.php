@@ -13,6 +13,7 @@ Route::group(["prefix" =>"v0.1"], function(){
             Route::get("/getUserCapsule", [CapsuleController::class, "getUserCapsule"]);
             Route::post("/createCapsule", [CapsuleController::class, "createCapsule"]);
             Route::post("/surpriseCapsule", [CapsuleController::class, "surpriseCapsule"]);
+            Route::get("/unsurpriseCapsule/{id?}", [CapsuleController::class, "unsurpriseCapsule"]);
             Route::get("/downloadCapsule/{id?}", [CapsuleController::class, "downloadCapsule"]);
             
             Route::get("/getCapsule/{id?}", [CapsuleController::class, "getCapsule"]);
