@@ -17,7 +17,7 @@ class CapsuleFactory extends Factory
     public function definition(): array
     {
         return [
-            'userId'=>3,
+            'userId'=>23,
             'message' => $this->faker->realText(50),
             'location' => $this->faker->city(),
             'mood' => $this->faker->randomElement(['happy', 'sad', 'angry', 'love']),

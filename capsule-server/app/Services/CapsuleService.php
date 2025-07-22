@@ -5,6 +5,8 @@ use App\Models\Capsule;
 use Illuminate\Http\Request;
 use Stevebauman\Location\Facades\Location;
 use Stevebauman\Location\Position;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CapsuleService
 {
@@ -26,25 +28,38 @@ class CapsuleService
         return $capsules->isNotEmpty() ? $capsules : null;
     }
 
-    static function getLocation(Request $request){
-             $ip = $request->ip();
-            //  $request->ip();
-         $position = Location::get($ip);
-        //  dd($position);
-         return $position && is_object($position) ? $position->countryName ?? 'Unknown' : 'Unknown';
+    // static function getLocation(Request $request){
+    //          $ip = $request->ip();
+    //         //  $request->ip();
+    //      $position = Location::get($ip);
+    //     //  dd($position);
+    //      return $position && is_object($position) ? $position->countryName ?? 'Unknown' : 'Unknown';
 
-    }
+    // }
 
     static function createCapsule(Request $request){
+        $ip = $request->ip();
+        $position = Location::get($ip);
         $capsule = new Capsule;
         $capsule->userId = auth()->id();
         $capsule->message = $request->message;
-        $capsule->image = $request->image; 
-        $capsule->voice = $request->voice;
-        $capsule->location = CapsuleService::getLocation($request);
+        
+    if ($request->hasFile('image')) {
+        $imageName = 'images/' . Str::uuid() . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+        $capsule->image = $imageName; 
+    }
+
+    
+    if ($request->hasFile('voice')) {
+        $voiceName = 'voices/' . Str::uuid() . '.' . $request->voice->extension();
+        $request->voice->move(public_path('voices'), $voiceName);
+        $capsule->voice = $voiceName; 
+    }
+
+        $capsule->location = $position;
         $capsule->mood = $request->mood;
         $capsule->privacy = $request->privacy;
-        $capsule->is_surprise = null;
         $capsule->revealdate = null;
         $capsule->save();
         return $capsule;
@@ -52,7 +67,7 @@ class CapsuleService
 
     static function  surpriseCapsule(Request $request){
 
-        $capsule = Capsule::find(auth()->id());
+        $capsule = Capsule::find($request->id);
         $check= $capsule->is_surprise;
         if($capsule&&!$check){
         $capsule->is_surprise = true;
