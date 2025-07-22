@@ -7,6 +7,7 @@ use Stevebauman\Location\Facades\Location;
 use Stevebauman\Location\Position;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use ZipArchive; 
 
 class CapsuleService
 {
@@ -38,8 +39,13 @@ class CapsuleService
     // }
 
     static function createCapsule(Request $request){
-        $ip = $request->ip();
-        $position = Location::get($ip);
+       $position = Location::get($request->ip);
+
+if ($position && is_object($position)) {
+    $location = $position->countryName ?? 'Unknown';
+} else {
+    $location = 'Unknown';
+}
         $capsule = new Capsule;
         $capsule->userId = auth()->id();
         $capsule->message = $request->message;
@@ -57,7 +63,7 @@ class CapsuleService
         $capsule->voice = $voiceName; 
     }
 
-        $capsule->location = $position;
+        $capsule->location = $location ;
         $capsule->mood = $request->mood;
         $capsule->privacy = $request->privacy;
         $capsule->revealdate = null;
