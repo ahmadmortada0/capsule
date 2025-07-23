@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Ahmad Mortada",
+    "email": "ahmad@example.com",
+    "password": "ahmad123"
+  },
+  {
+    "id":11,
+    "name": "Ahmad Mortada",
+    "email": "1",
+    "password": "1"
+  },
+  {
+    "id": 2,
+    "name": "Lana Smith",
+    "email": "lana@example.com",
+    "password": "lana456"
+  },
+  {
+    "id": 3,
+    "name": "Omar Hussein",
+    "email": "omar@example.com",
+    "password": "omar789"
+  },
+  {
+    "id": 4,
+    "name": "Sara Ibrahim",
+    "email": "sara@example.com",
+    "password": "sara321"
+  },
+  {
+    "id": 5,
+    "name": "Mohamed Ali",
+    "email": "mohamed@example.com",
+    "password": "mohamedpass"
+  },
+  {
+    "id": 6,
+    "name": "Jessica Lee",
+    "email": "jessica@example.com",
+    "password": "jessica999"
+  },
+  {
+    "id": 7,
+    "name": "Rami Kassem",
+    "email": "rami@example.com",
+    "password": "rami1122"
+  },
+  {
+    "id": 8,
+    "name": "Fatima Zahra",
+    "email": "fatima@example.com",
+    "password": "fatima777"
+  },
+  {
+    "id": 9,
+    "name": "Tariq Khalil",
+    "email": "tariq@example.com",
+    "password": "tariq000"
+  },
+  {
+    "id": 10,
+    "name": "Zainab Nawfal",
+    "email": "zainab@example.com",
+    "password": "zainab123"
+  }
+]
