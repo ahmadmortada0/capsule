@@ -1,14 +1,12 @@
-
-
-.signUp-section{
-    width :20rem;
-    padding-left: 1rem;
-    margin-top: 5rem;
+.signUp-section {
+  width: 20rem;
+  padding-left: 1rem;
+  margin-top: 5rem;
 }
-.form-section button{
-     margin: 1rem 5rem;
-    width: 5em;
-    height: 40px;
+.form-section button {
+  margin: 1rem 5rem;
+  width: 5em;
+  height: 40px;
 }
 /* .form-section {
     width :20rem

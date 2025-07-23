@@ -40,7 +40,7 @@
   background: white;
   border-radius: 50%;
   padding: 3px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
@@ -117,7 +117,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  max-width: 300px; 
+  max-width: 300px;
   margin-left: 1rem;
 }
 
@@ -127,7 +127,7 @@
   max-height: 250px;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .profile-image-section audio {
@@ -135,10 +135,8 @@
   outline: none;
 }
 
-
 @media (min-width: 600px) {
   .capsule-card {
     width: calc(50% - 0.5rem);
   }
 }
-

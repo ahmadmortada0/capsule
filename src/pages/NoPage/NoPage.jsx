@@ -1,14 +1,8 @@
-import React from 'react'
-import './NoPage.css'
+import React from "react";
+import "./NoPage.css";
 
-const NoPage = ({visible}) => {
+const NoPage = ({ visible }) => {
+  return <h1 className={visible}>NoPage found you cant hack me anymore 😂</h1>;
+};
 
-  return (
-
-    <h1 className={visible}>NoPage found you cant hack me anymore 😂</h1>
-
-  )
-
-}
-
-export default NoPage
+export default NoPage;

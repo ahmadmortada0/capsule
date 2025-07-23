@@ -1,18 +1,13 @@
-import React from 'react'
-import LoginLabel from '../../components/Login/LoginLabel'
-import './Login.css';
+import React from "react";
+import LoginLabel from "../../components/Login/LoginLabel";
+import "./Login.css";
 
 const Login = () => {
-  
   return (
-  
-  <div>
-     
-        <LoginLabel />
-   
-  </div>
-  
-  )
-}
+    <div>
+      <LoginLabel />
+    </div>
+  );
+};
 
-export default Login
+export default Login;

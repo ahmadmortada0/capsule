@@ -1,33 +1,33 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
-.invisible{
-    display: none;
+.invisible {
+  display: none;
 }
-.block{
-    display: block;
+.block {
+  display: block;
 }
-header button{
+header button {
   background-color: #837cce;
   color: white;
   border: none;
   border-radius: 50px;
-  padding: 0.8rem ;
+  padding: 0.8rem;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s;
 }
-header button:hover{
-    background-color: #9360d4;
-    cursor: pointer;
+header button:hover {
+  background-color: #9360d4;
+  cursor: pointer;
 }
-header img{
-     cursor: pointer;
+header img {
+  cursor: pointer;
 }
-header h3{
-    color: white;
+header h3 {
+  color: white;
 }
