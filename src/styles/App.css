@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.flex{
+    display: flex;
+}
+.invisible{
+    display: none;
+}
+.block{
+    display: block;
+}
+header button{
+  background-color: #837cce;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.8rem ;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+header button:hover{
+    background-color: #9360d4;
+    cursor: pointer;
+}
+header img{
+     cursor: pointer;
+}
+header h3{
+    color: white;
+}
