@@ -1,127 +1,109 @@
-import React, { useState } from 'react'
-import { Mic,Camera ,Send,Earth,EarthLock} from "lucide-react";
-import axios from 'axios';
+import React, { useState,useEffect } from 'react'
+import landing from '../../assets/images/landing.jpg'
+import CreateCapsule from './Createcapsule'
+import NoPage from '../../pages/NoPage/NoPage'
+const Body = () => {
+    
+  const today = new Date();
+  
+  const date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+  
+  const [ShowForm,setShowForm]=useState(false);
+  
+  const [hidden,setHidden]=useState()
+  
+  const [unfoundPage,setUnfoundPage]=useState("invisible")
+  
+  // const [hideContent,setHideContent]=useState(false);
+  
+  const show= ()=>{
+  
+    setShowForm(true);
+  
+    // setHideContent(false);
+  
+  }
+  
+  const close = () => {
+  
+    setShowForm(false);
+  
+    // setHideContent(true);
 
-const CreateCapsule = ({date,onClose}) => {
-  const [selectedHashtag, setSelectedHashtag] = useState('');
-  const [message, setMessage] = useState("");
-    const [ispublic,setIspublic]=useState("public")
-    const [imageFile, setImageFile] = useState(null);
-const [audioFile, setAudioFile] = useState(null);
-const [loading, setLoading] = useState(false);
-
-    const toggle= ()=>{
-      if(ispublic==="public"){
-        setIspublic("private")
-      }else{
-        setIspublic("public")
-      }
-    }
-
-    const handleChange = (e) => {
-    setSelectedHashtag(e.target.value);
   };
-
-  const getIpAddress = async () => {
-  try {
-    const res = await axios.get("https://api.ipify.org?format=json");
-    return res.data.ip;
-  } catch (error) {
-    console.error("Failed to get IP address:", error);
-    return "unknown";
-  }
-};
-const sendValue = async () => {
-  setLoading(true);
-  const token = localStorage.getItem("isAuth");
-  const ip = await getIpAddress();
-  console.log(ip)
-  const formData = new FormData();
-
-  formData.append("message", message);
-  formData.append("mood", selectedHashtag);
-  formData.append("privacy", ispublic);
-  formData.append("is_surprise", false);
-  formData.append("revealdate", null);
-  formData.append("location", ip);
-
-  if (imageFile) formData.append("image", imageFile);
-  if (audioFile) formData.append("voice", audioFile);
-
-  try {
-    const res = await axios.post(
-      'http://127.0.0.1:8000/api/v0.1/user/createCapsule',
-      formData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    console.log("Sent successfully", res.data);
-    onClose();
-  } catch (error) {
-    console.error("Failed to send capsule:", error.response?.data || error.message);
-  }
-}
-;
-
+  
+  useEffect(() => {
+  
+    if (localStorage.getItem("isAuth") === "false") {
+  
+      setHidden('invisible');
+  
+      setUnfoundPage("block");
+  
+    }
+  
+  }, []);
+  
   return (
-    <div className="capsule-container">
-      <div className="capsule-box">
-        <button className="close-btn" onClick={onClose}>✖</button>
-        <p className="capsule-date">A letter from {date}</p>
-        <h3>Write a message for future self</h3>
-        <button onClick={toggle } title="Earth" className='earth'>{ispublic==="public"?<Earth/>:<EarthLock/>}</button>
-        <textarea
-          placeholder="write your message"
-          className="capsule-textarea"
-          value={message} 
-          onChange={(e) => setMessage(e.target.value)}
-        />
-            
-
-      
-      <div className="capsule-footer">
-      
-      <select className="hashtag-select" onChange={handleChange} value={selectedHashtag}>
-      
-        <option >Choose a Hashtag</option>
-      
-        <option value="Happy">Happy</option>
-      
-        <option value="Love">Love</option>
-      
-        <option value="Sad">Sad</option>
-      
-        <option value="Tired">Tired</option>
-      
-      </select>
-
-          <div className="icons">
-        <label title="Attach Image" className="icon-button">
-          <Camera />
-          <input type="file" name="ImageStyle" className="invisible"  onChange={(e) => setImageFile(e.target.files[0])}/>
-        </label>
-
-        <label title="Attach Audio" className="icon-button">
-          <Mic />
-          <input type="file" name="AudioStyle" className="invisible"  onChange={(e) => setAudioFile(e.target.files[0])}/>
-        </label>
-
-        <button title="Send" className="icon-button " onClick={sendValue}>
-          
-          {loading?`sending...`:<Send />}
-        </button>
+  
+  <>
+  
+    <main className={hidden}>
+  
+        {/* className={hideContent?"":"disable "} */}
+  
+        <div className= "landing-container ">
+  
+      <div className="landing-text">
+  
+        <h1>🌍 Welcome to <span className="highlight">Surprise Me</span></h1>
+  
+        <p>Your moments. Your memories. Your message to the future.</p>
+  
+        <p>
+  
+          Craft a message for your future self — or for the world. Attach images, audio, text, even your location.
+  
+          Seal it with a reveal date, then forget it... until the time is right.
+  
+        </p>
+  
+        <ul>
+  
+          <li>⏳ Private, Public, or Unlisted.</li>
+  
+          <li>🎁 Surprise Mode available.</li>
+  
+          <li>📍 Location-Tagged. Emoji-Enhanced. Countdown-Shown.</li>
+  
+        </ul>
+  
+        <p>
+  
+          When your moment arrives, your capsule opens — for your eyes only, or for all to see on our global memory wall.
+  
+        </p>
+  
+        <button className="create-button" onClick={(show)}>Start Creating</button>
+  
       </div>
-
-        </div>
+  
+        {ShowForm && <CreateCapsule date={date} onClose={close} />}
+        
+      <div className="landing-image">
+  
+        <img src={landing} alt="Time capsule" />
+  
       </div>
+  
     </div>
+  
+    </main>
+  
+    <NoPage visible={unfoundPage} />
+  
+    </>
   )
 }
-export default CreateCapsule
 
-
-
-
+export default Body
