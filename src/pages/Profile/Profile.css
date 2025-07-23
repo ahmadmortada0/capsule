@@ -1,0 +1,144 @@
+.profileBackground img {
+  width: 100vw;
+  height: 30vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.profile_body {
+  margin: 3rem 1rem 0 1rem;
+  gap: 1rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-img-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.profile_img {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #837cce;
+  border-radius: 50%;
+  display: block;
+}
+
+.user_camera_icon {
+  color: #837cce;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 1px;
+  right: 5px;
+  background: white;
+  border-radius: 50%;
+  padding: 3px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.user_info_text {
+  margin-top: 3rem;
+  margin-left: 1rem;
+}
+
+.profile_container {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.profile_container hr {
+  width: 1px;
+  background-color: black;
+  border: none;
+  height: auto;
+}
+
+.profile_open_capsules {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile_pending_capsules {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile_open_capsules .flex,
+.profile_pending_capsules .flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.profile_open_capsules .card {
+  border: 1px black solid;
+  border-radius: 300px;
+}
+
+.quit-button {
+  color: #ffffff;
+  background-color: #837cce;
+  padding: 7px;
+}
+
+.quit-button:hover {
+  cursor: pointer;
+  background-color: #927cbe;
+}
+
+.surprise-button {
+  margin-right: 20px;
+}
+
+.capsule-card {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.profile-image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 300px; 
+  margin-left: 1rem;
+}
+
+.profile-image-section img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.profile-image-section audio {
+  width: 100%;
+  outline: none;
+}
+
+
+@media (min-width: 600px) {
+  .capsule-card {
+    width: calc(50% - 0.5rem);
+  }
+}
+

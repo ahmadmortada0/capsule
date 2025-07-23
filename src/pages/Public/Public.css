@@ -1,0 +1,74 @@
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem;
+  justify-content: space-between;
+}
+.capsule-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  max-width: 320px;
+  width: 100%;
+  margin: 1rem;
+  flex-shrink: 1;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+.capsule-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #3c3c3c;
+}
+
+.capsule-info p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #444;
+}
+
+.capsule-info span {
+  min-width: 75px;
+  display: inline-block;
+  color: #666;
+}
+
+.view-button {
+  margin-top: 1rem;
+  background-color:#8980F5;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  align-self: flex-start;
+}
+
+.view-button:hover {
+  background-color: #5750d3;
+}
+.filter-container{
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, 0.37);
+}
+.filter-container p{
+  font-weight: 800;
+  font-size: 20px;
+  color: #8980F5;
+  padding-left: 3rem;
+}
